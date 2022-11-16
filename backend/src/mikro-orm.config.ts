@@ -1,5 +1,5 @@
 import { __prod__ } from "./constants";
-import { Post } from "./entities/Post";
+import { Company } from "./entities/Company";
 import { MikroORM } from "@mikro-orm/core";
 import path from "path";
 
@@ -13,7 +13,7 @@ export default {
   user: "postgres",
   password: "postgres",
   clientUrl: "postgresql://postgres:postgres@db:5432",
-  entities: [Post],
+  entities: [Company],
   type: "postgresql",
 
   debug: !__prod__,
