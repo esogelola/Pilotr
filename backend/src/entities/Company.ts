@@ -1,33 +1,76 @@
-import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
+import { ObjectType, Field } from "type-graphql";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  Column,
+  BaseEntity,
+  OneToMany,
+  DeleteDateColumn
+} from "typeorm";
 
-// Create a new entity class called Company with properties id, employeeCount, name, address, country, useDataSpace, createdAt, updatedAt, and deletedAt, admin user id
+import { User } from "./User";
+import { DataGroup } from './DataGroup';
 
+
+// Company entity
+@ObjectType()
 @Entity()
-export class Company {
-  @PrimaryKey()
+export class Company extends BaseEntity {
+  @Field()
+  @PrimaryGeneratedColumn()
   id!: number;
 
-  @Property()
-  employeeCount!: number;
+  // Employee count field
+  @Field()
+  @Column({ default: 0 })
+  employeeCount: number;
 
-  @Property({ type: "text" })
+  // Company address field
+  @Field()
+  @Column({ default: "" })
+  address: string;
+
+  // company country field 
+  @Field()
+  @Column({ default: "" })
+  country: string;
+
+
+
+
+  // one to many relatioinship with user entity
+  @Field(() => [User])
+  @OneToMany(() => User, (user) => user.userCompany)
+  users: User[];
+
+
+
+  @Field()
+  @Column({ unique: true })
   name!: string;
 
-  @Property({ type: "text" })
-  address!: string;
+  @Field(() => [DataGroup])
+  @OneToMany(() => DataGroup , (dataGroup) => dataGroup.company)
+  dataGroups: DataGroup[];
 
-  @Property({ type: "text" })
-  country!: string;
+  @Field()
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @Property()
-  usedDataSpace!: number;
+  @Field()
+  @UpdateDateColumn()
+  updatedAt: Date;
 
-  @Property({ type: "date" })
-  createdAt? = new Date();
-
-  @Property({ type: "date", onUpdate: () => new Date() })
-  updatedAt? = new Date();
-
-  @Property({ type: "date", nullable: true })
-  deletedAt?: Date;
+  // Deleted at field
+  @Field()
+  @DeleteDateColumn()
+  deletedAt: Date;
 }
+
+
+
+
+
+
