@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
 
 export default function Sidebar() {
-  const [show, setShow] = useState(false);
-
+  const [name, setName] = useState("John Doe");
   return (
     <div className="flex flex-col w-64 bg-gray-800">
       <div className="flex flex-col flex-1 p-4 space-y-4 overflow-y-auto">
@@ -15,8 +20,8 @@ export default function Sidebar() {
             />
           </div>
           <nav className="flex flex-col flex-1 mt-5 space-y-1">
-            <a
-              href="#"
+            <Link
+              href="/dashboard"
               className="flex items-center px-2 py-2 text-sm font-medium text-white bg-gray-900 rounded-md group"
             >
               <svg
@@ -35,9 +40,9 @@ export default function Sidebar() {
                 />
               </svg>
               Dashboard
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/dashboard/groups"
               className="flex items-center px-2 py-2 text-sm font-medium text-gray-300 rounded-md group hover:text-white hover:bg-gray-700"
             >
               <svg
@@ -55,9 +60,9 @@ export default function Sidebar() {
                   d="M4 6h16M4 10h16M4 14h16M4 18h16"
                 />
               </svg>
-              Team
-            </a>
-            <a
+              Data Groups
+            </Link>
+            {/* <a
               href="#"
               className="flex items-center px-2 py-2 text-sm font-medium text-gray-300 rounded-md group hover:text-white hover:bg-gray-700"
             >
@@ -88,7 +93,7 @@ export default function Sidebar() {
                   d="M9 21v-6a3 3 0 016 0v6m-3-9a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              Projects
+              Data Files
             </a>
             <a
               href="#"
@@ -152,27 +157,29 @@ export default function Sidebar() {
                 />
               </svg>
               Reports
-            </a>
+            </a> */}
           </nav>
         </div>
         <div className="flex-shrink-0 flex border-t border-gray-700 p-4">
-          <a href="#" className="flex-shrink-0 group block">
+          <Link href="/dashboard/profile" className="flex-shrink-0 group block">
             <div className="flex items-center">
               <div>
-                <img
+                <Image
                   className="inline-block h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1517841900229-3a7e3c4d913c?ixlib=rb-1.2.1&ixqx=J2m4y0r0Jn&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  src="https://via.placeholder.com/500"
                   alt=""
+                  width={500}
+                  height={500}
                 />
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-white">Tom Cook</p>
+                <p className="text-sm font-medium text-white">{name}</p>
                 <p className="text-xs font-medium text-gray-400 group-hover:text-gray-300">
                   View profile
                 </p>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

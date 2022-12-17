@@ -18,7 +18,6 @@ export default function Login() {
 
   return (
     <div>
-      <HomeNavbar />
       <div className="relative bg-gray-50 overflow-hidden">
         <div className="relative bg-gray-50 overflow-hidden">
           <div className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full">

@@ -1,12 +1,13 @@
-import HomeHero from "../components/Home/HomeHero";
-import { NextPageWithLayout } from "./_app";
+import Home from "../../components/Dashboard/Home";
+
+import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
-import Layout from "../components/Home/Layout";
+import Layout from "../../components/Dashboard/Layout";
 
 const Page: NextPageWithLayout = () => {
   return (
     <>
-      <HomeHero />
+      <Home />
     </>
   );
 };

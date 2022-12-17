@@ -62,12 +62,14 @@ export default function HomeNavbar() {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Pilotr</a>
+          <Link href="/" className="btn btn-ghost normal-case text-xl">
+            Pilotr
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <a>PilotrOne</a>
+              <Link href="/">PilotrOne</Link>
             </li>
             <li tabIndex={0}>
               <a>
