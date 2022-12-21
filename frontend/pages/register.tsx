@@ -5,32 +5,43 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import HomeNavbar from "../components/Home/HomeNavbar";
 
+import { useRouter } from "next/router";
+
+
 interface registerProps {
   name: string;
 }
 
 export default function Register({}: registerProps) {
-  const [step, setStep] = React.useState(1);
+
+  const router = useRouter();
+
+
+
 
   // User related states
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [jobTitle, setJobTitle] = React.useState("");
 
   // Company related states
   const [country, setCountry] = React.useState("");
   const [companyName, setCompanyName] = React.useState("");
   const [companyAddress, setCompanyAddress] = React.useState("");
-  const [employeeCount, setEmployeeCount] = React.useState("");
+  const [employeeCount, setEmployeeCount] = React.useState(0);
 
   const [message, setMessage] = React.useState("");
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
-  const handleSubmit = async (event: React.MouseEvent) => {};
+  const handleSubmit = async (event: React.MouseEvent) => {
+    event.preventDefault();
+    setLoading(true);
+    
+
+  };
 
   return (
     // Background image and gradient

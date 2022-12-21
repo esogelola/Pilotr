@@ -8,41 +8,32 @@ export const createCompanyDir = async (
 ) => {
   try {
     // create the directory if it does not exist
-    if (!fs.existsSync(`static/${companyDirectory}`)) {
-      fs.mkdirSync(`static/${companyDirectory}`);
+    if (!fs.existsSync(`static/${companyDirectory}/`)) {
+      // create the directory
+      fs.mkdirSync(`./src/static/${companyDirectory}`, { recursive: true });
     }
 
-   
     if (
       !fs.existsSync(
-        path.join(
-          "../",
-          `static/${companyDirectory}/${dataGroupDirectory}`
-        )
+        path.join("./src/", `static/${companyDirectory}/${dataGroupDirectory}`)
       ) &&
       dataGroupDirectory
     ) {
       fs.mkdirSync(
-        path.join(
-          "../",
-          `static/${companyDirectory}/${dataGroupDirectory}`
-        )
+        path.join("./src/", `static/${companyDirectory}/${dataGroupDirectory}`)
       );
     }
     if (
-      !fs.existsSync(
-        path.join(
-          "../",
-          `static/${companyDirectory}/${dataGroupDirectory}/${dataFileName}`
-        )
-      ) &&
       dataFileName
     ) {
-      fs.mkdirSync(
+      // create the file
+      fs.writeFileSync(
         path.join(
-          "../",
+          "./src/",
           `static/${companyDirectory}/${dataGroupDirectory}/${dataFileName}`
-        )
+        ),
+        "1,2,3,4,5,6,7,8,9,10"
+
       );
     }
   } catch (error) {
@@ -50,5 +41,29 @@ export const createCompanyDir = async (
     return false;
   }
 
-  return  true;
+  return true;
+};
+
+export const createFileInCompanyDir = async (
+  companyDirectory: string,
+  dataGroupDirectory: string,
+  dataFileName: string
+) => {
+  try {
+    // create the directory if it does not exist
+    if (!fs.existsSync( `static/${companyDirectory}/`)) {
+      // create the directory
+      fs.mkdirSync(`./src/static/${companyDirectory}`, { recursive: true });
+    } 
+    if (!fs.existsSync(path.join("./src/", `static/${companyDirectory}/${dataGroupDirectory}`))) {
+      fs.mkdirSync(path.join("./src/", `static/${companyDirectory}/${dataGroupDirectory}`));
+    }
+    // create the file
+    fs.writeFileSync(path.join("./src/", `static/${companyDirectory}/${dataGroupDirectory}/${dataFileName}`), "1,2,3,4,5,6,7,8,9,10");
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+
+  return true;
 };

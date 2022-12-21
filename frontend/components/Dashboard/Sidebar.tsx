@@ -22,6 +22,7 @@ export default function Sidebar() {
           <nav className="flex flex-col flex-1 mt-5 space-y-1">
             <Link
               href="/dashboard"
+              
               className="flex items-center px-2 py-2 text-sm font-medium text-white bg-gray-900 rounded-md group"
             >
               <svg
@@ -61,6 +62,27 @@ export default function Sidebar() {
                 />
               </svg>
               Data Groups
+            </Link>
+            <Link
+              href="/dashboard/file/enhance"
+              className="flex items-center px-2 py-2 text-sm font-medium text-gray-300 rounded-md group hover:text-white hover:bg-gray-700"
+            >
+              <svg
+                className="w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                />
+              </svg>
+            Enhance
             </Link>
             {/* <a
               href="#"

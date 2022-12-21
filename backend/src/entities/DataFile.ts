@@ -34,7 +34,9 @@ export class DataFile extends BaseEntity{
     @Column({ default: '' })
     description!: string;
     
-
+    @Field()
+    @Column({ default: '' })
+    content!: string;
 
     @Field()
     @Column({ default: '' })

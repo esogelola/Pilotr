@@ -18,6 +18,11 @@ export class CompanyResolver {
     return this.companyRepo.find();
   }
 
+  @Query(() => Company, { nullable: true })
+  async company(@Arg("id") id: number): Promise<Company | undefined | null> {
+    return this.companyRepo.findOne({where : {id}, relations: ["users"]});
+  }
+
   @Mutation(() => CompanyResponse)
   async createCompany(
     @Arg("name") name: string,
@@ -117,6 +122,7 @@ export class CompanyResolver {
     return { company, user };
   }
 
+  // update company
   @Mutation(() => CompanyResponse)
   async updateCompany(
     @Arg("id") id: number,
