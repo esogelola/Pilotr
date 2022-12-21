@@ -1,0 +1,44 @@
+mutation createCompany(
+  $name: String!
+  $address: String!
+  $country: String!
+  $employeeCount: Float!
+  $firstName: String!
+  $lastName: String!
+  $email: String!
+  $password: String!
+) {
+  createCompany(
+    name: $name
+    address: $address
+    country: $country
+    employeeCount: $employeeCount
+    firstName: $firstName
+    lastName: $lastName
+    email: $email
+    password: $password
+  ) {
+    errors {
+      field
+      message
+    }
+    company {
+      id
+      employeeCount
+      address
+      name
+      country
+    }
+    user {
+      id
+      email
+      firstName
+      lastName
+      role
+      userCompany {
+        id
+        name
+      }
+    }
+  }
+}
